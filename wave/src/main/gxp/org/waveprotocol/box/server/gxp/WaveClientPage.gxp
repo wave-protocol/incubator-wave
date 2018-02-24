@@ -55,20 +55,16 @@
       <script type='text/javascript'>
       DialogOpen = false;
       $('document').ready(function(){
-        document.getElementById("SettingsCog").addEventListener("click",function(){
+        document.getElementById("SettingsCog").addEventListener("click", function(){
+          $( "#dialog *" ).css("display","unset");
           if (DialogOpen == false) {
             $( "#dialog" ).dialog({
                 title: document.getElementById("hiddenTitleText").innerHTML,
                 resizable: false,
                 draggable: false,
 			          width: 250,
-			          height: 80,
-                position: {
-                  at: "left+125px top-50px",
-                  of: this
-                }
+			          height: 80
             });
-            $( "#dialog *" ).css("display","unset");
             DialogOpen = true
           } else {
             $( "#dialog" ).dialog("close")
@@ -83,6 +79,14 @@
             margin-left: 20px !important;
           }
         }
+
+        .ui-dialog {
+          position: absolute;
+          right: 0px !important;
+          left: unset !important;
+          top: 60px !important;
+        }
+
         /* TODO: Minimize this. */
         body {
           /* Override UA defaults. */
