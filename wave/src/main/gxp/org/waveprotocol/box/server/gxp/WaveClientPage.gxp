@@ -56,7 +56,7 @@
       DialogOpen = false;
       $('document').ready(function(){
         document.getElementById("SettingsCog").addEventListener("click", function(){
-          $( "#dialog *" ).css("display","unset");
+          $( "#dialog *" ).css("display","inline");
           if (DialogOpen == false) {
             $( "#dialog" ).dialog({
                 title: document.getElementById("hiddenTitleText").innerHTML,
@@ -83,7 +83,7 @@
         .ui-dialog {
           position: absolute;
           right: 0px !important;
-          left: unset !important;
+          left: auto !important;
           top: 60px !important;
         }
 
