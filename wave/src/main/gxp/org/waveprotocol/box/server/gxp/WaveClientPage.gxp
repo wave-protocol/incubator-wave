@@ -53,14 +53,27 @@
       <script src="/static/jquery-1.12.4.js" type='text/javascript'></script>
       <script src="/static/jquery-ui.js" type='text/javascript'></script>
       <script type='text/javascript'>
+      DialogOpen = false;
       $('document').ready(function(){
         document.getElementById("SettingsCog").addEventListener("click",function(){
-          $( "#dialog" ).dialog({
-              title: document.getElementById("hiddenTitleText").innerHTML,
-              resizable: false,
-              draggable: false
+          if (DialogOpen == false) {
+            $( "#dialog" ).dialog({
+                title: document.getElementById("hiddenTitleText").innerHTML,
+                resizable: false,
+                draggable: false,
+			          width: 250,
+			          height: 80,
+                position: {
+                  at: "left+125px top-50px",
+                  of: this
+                }
             });
-          $( "#dialog *" ).css("display","unset");
+            $( "#dialog *" ).css("display","unset");
+            DialogOpen = true
+          } else {
+            $( "#dialog" ).dialog("close")
+            DialogOpen = false;
+          }
         } );
       });
       </script>
@@ -74,6 +87,10 @@
         body {
           /* Override UA defaults. */
           margin: 0;
+        }
+
+        .ui-dialog-titlebar {
+          display:none;
         }
 
         .topbar {
