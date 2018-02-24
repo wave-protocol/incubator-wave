@@ -1,13 +1,12 @@
 | Tool | Status |
 | --- | --- |
-| Jenkins | [![Build Status](https://builds.apache.org/buildStatus/icon?job=wave-small_tests)](https://builds.apache.org/job/wave-small_tests) |
-| Travis | [![Build Status](https://travis-ci.org/apache/incubator-wave.svg?branch=master)](https://travis-ci.org/apache/incubator-wave) |
+| Travis | [![Build Status](https://travis-ci.org/wave-protocol/wave.svg?branch=master)](https://travis-ci.org/wave-protocol/wave) |
 
-# Apache Wave
+# Wave
 
-The Apache Wave project is a stand alone wave server and rich web client
+The Wave project is a stand alone wave server and rich web client
 that serves as a Wave reference implementation.
-Apache Wave site: http://incubator.apache.org/wave/.
+Wave site: http://www.waveprotocol.org/.
 This project lets developers and enterprise users run wave servers and
 host waves on their own hardware. And then share those waves with other
 wave servers.
@@ -40,10 +39,6 @@ software:
     http://www.bouncycastle.org/java.html
 
 ## Run Binary
-
-The nightly binaries can be downloaded from https://builds.apache.org/view/S-Z/view/Wave/job/wave-artifacts/lastSuccessfulBuild/artifact/.
-The latest "dev" releases can be downloaded from: https://dist.apache.org/repos/dist/dev/incubator/wave/.
-The latest officially released binaries can be downloaded from: https://dist.apache.org/repos/dist/release/incubator/wave/.
 
 Extract the archive and execute ./bin/wave for Linux/Mac or bin\wave.bat for Windows.
 
@@ -176,7 +171,7 @@ The web client will be accessible by default at http://localhost:9898/.
 
 ## To learn more about Wave in a Box and Wave Federation Protocol:
 
-1. Subscribe to the wave-dev mailing list, find instructions at http://incubator.apache.org/wave/mailing-lists.html.
+1. Subscribe to the wave-dev mailing list, find instructions at https://groups.google.com/forum/#!forum/wave-protocol.
 2. Visit the Apache Wave wiki at https://cwiki.apache.org/confluence/display/WAVE/Home.
 3. Look at the white papers folder - the information is a bit old but still usable.
 4. Watch the Wave Summit videos on YouTube, find the links at: https://cwiki.apache.org/confluence/display/WAVE/Wave+Summit+Talks
