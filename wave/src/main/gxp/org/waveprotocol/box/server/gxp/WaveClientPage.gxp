@@ -96,6 +96,10 @@
         .ui-dialog-titlebar {
           display:none;
         }
+        
+        #lang {
+          width: 140px;
+        }
 
         .topbar {
           height: 56px;
@@ -129,6 +133,10 @@
           position: relative;
           bottom: 15px;
           color: #9F9F9F;
+        }
+        
+        #dialog {
+          overflow: hidden;
         }
 
         #dialog * {
