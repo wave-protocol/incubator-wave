@@ -49,26 +49,23 @@
         var __websocket_address = <gxp:eval expr='websocketAddress' />;
         var __client_flags = <gxp:eval expr='clientFlags' />;
       </script>
-      <link rel="stylesheet" href="/static/jquery-ui.css"/>
-      <script src="/static/jquery-1.12.4.js" type='text/javascript'></script>
-      <script src="/static/jquery-ui.js" type='text/javascript'></script>
       <script type='text/javascript'>
       DialogOpen = false;
-      $('document').ready(function(){
+      function ready(callback){
+        if (document.readyState!='loading') callback();
+        else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
+        else document.attachEvent('onreadystatechange', function(){
+          if (document.readyState=='complete') callback();
+        });
+      }
+      ready(function(){
         document.getElementById("SettingsCog").addEventListener("click", function(){
-          $( "#dialog *" ).css("display","inline");
           if (DialogOpen == false) {
-            $( "#dialog" ).dialog({
-                title: document.getElementById("hiddenTitleText").innerHTML,
-                resizable: false,
-                draggable: false,
-			          width: 250,
-			          height: 80
-            });
-            DialogOpen = true
+            document.getElementById("dialog").setAttribute("style","display: block;");
+            DialogOpen=true;
           } else {
-            $( "#dialog" ).dialog("close")
-            DialogOpen = false;
+            document.getElementById("dialog").setAttribute("style","display: none;");
+            DialogOpen=false;
           }
         } );
       });
@@ -80,21 +77,24 @@
           }
         }
 
-        .ui-dialog {
+        #dialog {
           position: absolute;
           right: 0px !important;
           left: auto !important;
           top: 60px !important;
+          overflow: hidden;
+          display: none;
+          background-color: #FFFFFF;
+          z-index: 1;
+          padding: 10px;
+          margin-right: 10px;
+          border: solid  #9F9F9F 1px;
         }
 
         /* TODO: Minimize this. */
         body {
           /* Override UA defaults. */
           margin: 0;
-        }
-
-        .ui-dialog-titlebar {
-          display:none;
         }
         
         #lang {
@@ -137,9 +137,6 @@
         
         #dialog {
           overflow: hidden;
-        }
-
-        #dialog * {
           display: none;
         }
 
@@ -173,7 +170,6 @@
 
         .lang {
           height: 19px;
-          display:none;
         }
 
         #SettingsCog {

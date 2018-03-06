@@ -258,7 +258,6 @@ public class WebClient implements EntryPoint {
     UIObject.setVisible(waveFrame.getElement(), false);
 
     Document.get().getElementById("signout").setInnerText(messages.signout());
-    Document.get().getElementById("hiddenTitleText").setInnerText(messages.settings());
     Document.get().getElementById("language").setInnerText(messages.language());
     Document.get().getElementById("unsavedStateContainer").setInnerHTML("<span> " + statemessages.saved() + "</span>");
     // Handles opening waves.

@@ -26,7 +26,6 @@
     xmlns:gxp='http://google.com/2001/gxp'>
   <gxp:param name='username' type='String' />
   <gxp:param name='domain' type='String' />
-  <span id="hiddenTitleText"></span>
   <a href="/" class="logoContainer"><img src="/static/logo.png" alt="logo" class="logo" /></a>
   <div id="dialog">
       <span>
