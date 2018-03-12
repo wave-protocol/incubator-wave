@@ -44,4 +44,7 @@ public interface WebClientMessages extends Messages {
 
   @DefaultMessage("Sign out")
   String signout();
+
+  @DefaultMessage("Language")
+  String language();
 }
