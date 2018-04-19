@@ -28,10 +28,6 @@ import org.waveprotocol.wave.client.scheduler.Scheduler.IncrementalTask;
 import org.waveprotocol.wave.client.scheduler.Scheduler.Task;
 import org.waveprotocol.wave.client.scheduler.SchedulerInstance;
 import org.waveprotocol.wave.client.scheduler.TimerService;
-import org.waveprotocol.wave.client.widget.toolbar.GroupingToolbar;
-import org.waveprotocol.wave.client.widget.toolbar.ToolbarButtonViewBuilder;
-import org.waveprotocol.wave.client.widget.toolbar.ToolbarView;
-import org.waveprotocol.wave.client.widget.toolbar.buttons.ToolbarClickButton;
 import org.waveprotocol.wave.model.id.WaveId;
 import org.waveprotocol.wave.model.util.CollectionUtils;
 import org.waveprotocol.wave.model.util.IdentityMap;
@@ -136,7 +132,6 @@ public final class SearchPresenter
    * Performs initial presentation, and attaches listeners to live objects.
    */
   private void init() {
-    initToolbarMenu();
     initSearchBox();
     render();
     search.addListener(this);
@@ -160,31 +155,16 @@ public final class SearchPresenter
     profiles.removeListener(this);
   }
 
-  /**
-   * Adds custom buttons to the toolbar.
-   */
-  private void initToolbarMenu() {
-    GroupingToolbar.View toolbarUi = searchUi.getToolbar();
-    ToolbarView group = toolbarUi.addGroup();
-    new ToolbarButtonViewBuilder().setText(messages.newWave()).applyTo(
-        group.addClickButton(), new ToolbarClickButton.Listener() {
-          @Override
-          public void onClicked() {
-            actionHandler.onCreateWave();
+  public void create() {
+    actionHandler.onCreateWave();
 
-            // HACK(hearnden): To mimic live search, fire a search poll
-            // reasonably soon (500ms) after creating a wave. This will be unnecessary
-            // with a real live search implementation. The delay is to give
-            // enough time for the wave state to propagate to the server.
-            int delay = 500;
-            scheduler.scheduleRepeating(searchUpdater, delay, POLLING_INTERVAL_MS);
-          }
-        });
-    // Fake group with empty button - to force the separator be displayed.
-    group = toolbarUi.addGroup();
-    new ToolbarButtonViewBuilder().setText("").applyTo(group.addClickButton(), null);
+    // HACK(hearnden): To mimic live search, fire a search poll
+    // reasonably soon (500ms) after creating a wave. This will be unnecessary
+    // with a real live search implementation. The delay is to give
+    // enough time for the wave state to propagate to the server.
+    int delay = 500;
+    scheduler.scheduleRepeating(searchUpdater, delay, POLLING_INTERVAL_MS);
   }
-
   /**
    * Initializes the search box.
    */

@@ -200,6 +200,16 @@
           font-weight: bold;
         }
 
+        #create {
+          position: fixed;
+          top: 6px;
+          left: 10px;
+          height: 30px;
+          width: 30px;
+          padding: 8px;
+          cursor: pointer;
+        }
+
       </style>
       <!-- GWT-compiled JS. -->
       <script type="text/javascript" language="javascript">
