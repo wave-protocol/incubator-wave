@@ -23,8 +23,7 @@
 @eval searchHeight org.waveprotocol.box.webclient.search.SearchPanelWidget.CssConstants.SEARCH_HEIGHT;
 
 .self {
-  height: searchHeight;
-  background-color: blue;
+  height: 0px;
   margin: auto;
   position: relative;
 }
@@ -48,7 +47,21 @@ input.query {
   height: 25px;
   border-width: 1px;  /* Standardize (Webkit default is 2px, FF is 3). */
   padding: 1px;
-  width: 100%;  /* Stretch to width of container. */
+  width: 302px;
+  padding: 12px 24px;
+  margin: 8px 0;
+  display: inline-block !important;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: white;
+  background-image: url('/static/images/search.png');
+  background-position: 3px 3px; 
+  background-repeat: no-repeat;
+  background-size: 17px;
+  position: fixed;
+  top: 8px;
+  left: 58px;
 }
 
 .searchButtonsPanel {
@@ -58,6 +71,7 @@ input.query {
   font-family: verdana;
   font-size: 12px;
   line-height: 20px;
+  display:none;
 }
 
 .searchButton {
