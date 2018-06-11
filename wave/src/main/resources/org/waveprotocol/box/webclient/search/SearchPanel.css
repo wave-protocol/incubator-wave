@@ -52,6 +52,7 @@
   right: 0;
   left: 0;
   border-left: 1px solid #E4F1FE;
+  display: none;
 }
 
 .list {
@@ -61,7 +62,7 @@
    */
   overflow-y: scroll;
   position: absolute;
-  top: listTop;
+  top: 0px;
   left: 0;
   right: 0;
   bottom: 0;

@@ -35,6 +35,7 @@
       </span>
   </div>
   <div class="topbar">
+    <img src="/static/images/CreateIcon.png" id="create" alt="New wave"/>
     <div class="banner" id="banner"></div>
     <div class="info">
       <gxp:if cond='username == null'>
@@ -47,7 +48,9 @@
       </span>
       <gxp:if cond='username != null'>
       
-        <span class="username"><gxp:eval expr='username' /><span class="domain">@<gxp:eval expr='domain' /></span></span><img src="/static/images/SettingsCog.png" id="SettingsCog" alt="Settings"/><!--<span class="domain">@<gxp:eval expr='domain' /></span>-->
+        <span class="username"><gxp:eval expr='username' /><span class="domain">@<gxp:eval expr='domain' /></span></span>
+        <img src="/static/images/SettingsCog.png" id="SettingsCog" alt="Settings"/>
+        <!--<span class="domain">@<gxp:eval expr='domain' /></span>-->
         <!--<span id='unsavedStateContainer' style="width: 60px">Saved</span> |
         <span id="netstatus" class="offline">Offline</span> |-->
         

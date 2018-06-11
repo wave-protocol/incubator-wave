@@ -21,33 +21,21 @@
  * Author: hearnden@google.com (David Hearnden)
  */
 
-/*
- * Layout model:
- *     ____________.digest______________________________________________
- *    |  __________.inner______________4px___________________________   |
- *    | |       | |       | |     | Lorem ipsum - blah |     | time  |  |
- *    |4| 32x32 |4| 32x32 |4| 1em |____________________| 1em |_______|10|
- *    | | avatar| | avatar| |     | blah blah blah     |     | msgs  |  |
- *    | |_______|_|_______|_|_____|____________________|_____|_______|  |
- *    |________________________________4px______________________________|
- *    |=============(border)============================================|
- */
-
 .digest {
   min-width: 100px;
   padding: 4px 10px 4px 4px; /* 4px padding, but a bit extra on the RHS. */
   border-bottom: 1px solid #eee;
   cursor: pointer;
   color: grey;
+  padding-left: 8px;
 }
 
 .digest:hover {
-  background-color: #eee;
+  background-color: #F3F3F3;
 }
 
 .digest.selected {
-  background-color: #789e35;
-  color: white;  
+  background-color: #eee;
 }
 
 .inner {
@@ -57,29 +45,23 @@
 }
 
 .avatars {
-  float: left;
-  margin-right: 1em;
+  float: right;
+  margin-left: 1em;
   width: 108px;  /* (32 + 4) x 3. */
 }
 
 .avatar {
-  float: left;
+  float: right;
   height: 30px;
   width: 30px;
-  margin-right: 4px;
+  margin-left: 4px;
   border: 1px solid #b3b3b3;
-  border-radius: 1px;
-  -moz-border-radius: 1px;
-  -webkit-border-radius: 1px;
+  border-radius: 50%;
 }
 
 .unread {
   font-weight: bold;
-  color: black;  
-}
-
-.selected .unread {
-  color: white;
+  color: black;
 }
 
 .info {

@@ -42,6 +42,9 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import com.google.gwt.user.client.ui.UIObject;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 
 import org.waveprotocol.box.webclient.client.i18n.WebClientMessages;
 import org.waveprotocol.box.webclient.client.i18n.SavedStateMessages;
@@ -235,6 +238,8 @@ public class WebClient implements EntryPoint {
     FocusManager.init();
   }
 
+  SearchPresenter gSPresenter;
+
   private void setupSearchPanel() {
     // On wave action fire an event.
     SearchPresenter.WaveActionHandler actionHandler =
@@ -250,7 +255,7 @@ public class WebClient implements EntryPoint {
           }
         };
     Search search = SimpleSearch.create(RemoteSearchService.create(), waveStore);
-    SearchPresenter.create(search, searchPanel, actionHandler, profiles);
+    gSPresenter = SearchPresenter.create(search, searchPanel, actionHandler, profiles);
   }
 
   private void setupWavePanel() {
@@ -266,6 +271,16 @@ public class WebClient implements EntryPoint {
       public void onSelection(WaveRef waveRef) {
         openWave(waveRef, false, null);
       }
+    });
+    Element CreateButton = Document.get().getElementById("create");
+    Event.sinkEvents(CreateButton, Event.ONCLICK);
+    Event.setEventListener(CreateButton, new EventListener() {
+        @Override
+        public void onBrowserEvent(Event event) {
+             if(Event.ONCLICK == event.getTypeInt()) {
+               gSPresenter.create();
+             }
+        }
     });
   }
 

@@ -80,7 +80,7 @@ public class SearchPanelWidget extends Composite implements SearchPanelView {
     private static int TOOLBAR_HEIGHT_PX =
         SearchPanelResourceLoader.getPanel().emptyToolbar().getHeight();
     private static int TOOLBAR_TOP_PX = 0 + SEARCH_HEIGHT_PX;
-    private static int LIST_TOP_PX = TOOLBAR_TOP_PX + TOOLBAR_HEIGHT_PX;
+    private static int LIST_TOP_PX = TOOLBAR_TOP_PX;
 
     // CSS constants exported to .css files
     static String SEARCH_HEIGHT = SEARCH_HEIGHT_PX + "px";
