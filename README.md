@@ -38,6 +38,12 @@ software:
   Wave requires the BouncyCastle Java cryptography APIs:
     http://www.bouncycastle.org/java.html
 
+## Run from Source
+
+Run `./gradlew run` (`gradlew.bat run` on Windows) from the root of the source code.
+
+The web client will be accessible by default at http://localhost:9898/.
+
 ## Run Binary
 
 Extract the archive and execute ./bin/wave for Linux/Mac or bin\wave.bat for Windows.
