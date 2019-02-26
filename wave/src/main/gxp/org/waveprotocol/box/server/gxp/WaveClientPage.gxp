@@ -148,7 +148,6 @@
         #status {
           color: #9F9F9F;
           position: absolute;
-          right: 64px;
           top: 25px;
           font-size: 10pt;
         }
@@ -209,7 +208,6 @@
           padding: 8px;
           cursor: pointer;
         }
-
       </style>
       <!-- GWT-compiled JS. -->
       <script type="text/javascript" language="javascript">
