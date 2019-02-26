@@ -31,6 +31,7 @@
   <gxp:param name='domain' type='String' />
   <gxp:param name='message' type='String' />
   <gxp:param name='responseType' type='String' />
+  <gxp:param name='loginDetails' type='String' />
   <gxp:param name='disableRegistration' type='Boolean' />
   <gxp:param name='analyticsAccount' type='String'/>
 
@@ -43,107 +44,80 @@
   <call:AnalyticsFragment expr:account='analyticsAccount'/>
   </head>
   <body onload="init()">
-  <table width="100%" border="0" align="center" cellpadding="0"
-    cellspacing="0" style="margin-top: 15px">
-    <tr>
-      <td valign="top" style="padding-left: 20px; padding-right: 10px"><img
-        src="/static/logo.png" border="0" width="45px" height="30"
-        align="left" vspace="10" alt='Wave in a Box logo' /></td>
-      <td width="95%">
-      <table width="100%" align="right" cellspacing="0"
-        bgcolor="#C3D9FF" dir="ltr">
-        <tr>
-          <td class="bubble"
-            style='font-family: arial; text-align: left; font-weight: bold; padding-right: 10px;'
-            dir="ltr"><span><b>Wave in a Box - Register a New  Account 
-           </b> @<gxp:eval expr='domain' /></span></td>
-        </tr>
-      </table>
-      </td>
-    </tr>
-  </table>
-  <table border="0" width="100%" cellpadding="1" cellspacing="1"
-    style="margin-top: 10px; padding-left: 20px;">
-    <tr>
-      <td align="left" style="height: 20px; padding-right: 10;"><label
-        id="messageLbl" style="display: none;"></label><span
-        id="loginLink" style="display: none;">&#160;Please <a
-        href="/auth/signin">sign in</a>.</span></td>
-    </tr>
-    <tr>
-      <td id="wiab_loginbox_td" valign="top" align="center">
-      <gxp:if cond='disableRegistration == true'>
-      Registration disabled by administrator.
-      </gxp:if>
-      <gxp:if cond='disableRegistration == false'>
-      <form id="regForm" name="regForm" method="post" action="">
-      <table align="left">
-        <tr>
-          <td>
-          <table class="form-noindent" align="center" cellspacing="5"
-            cellpadding="5" width="100%" border="0">
-            <tbody>
-              <tr>
-                <td>Username:</td>
-                <td><input id="address" name="address"
-                  class='wiab le val' tabindex="1" value="" type="text"
-                  style="padding-bottom: 0px;" /></td>
-              </tr>
-              <tr>
-                <td style="padding: 0px; margin: 0px"></td>
-                <td align="right"
-                  style="color: #444444; font-size: 75%; overflow: hidden; padding-top: 0px; margin-top: 0px; vertical-align: top;"
-                  dir="ltr">@<gxp:eval expr='domain' /></td>
-              </tr>
-              <tr>
-                <td><label for="password">Password:</label></td>
-                <td><input id="password" name="password"
-                  tabindex="2" autocomplete="OFF" type="password"
-                  class='wiab le val' /></td>
-              </tr>
-              <tr>
-                <td><label for="verifypass">Re-enter
-                Password: </label></td>
-                <td><input id="verifypass" name="verifypass"
+      <div id="header">
+          <img src="/static/logo.png" border="0" width="45px" height="30"
+            id="logo" vspace="10" alt='Wave in a Box logo' />
+            <a href="/" id="signuplink">Sign in</a>
+      </div>
+
+    <div id="notHeader">
+        <div id="signinbox">
+          <gxp:if cond='disableRegistration == false'>
+            
+              <form id="regForm" name="regForm" method="post" action="">
+                <h2 id="signintext">Sign up</h2>
+                <span class="wiab le lbl">
+                  Username: 
+                </span>
+                <br/>
+  
+                <input type="text" name="address" id="address"
+                  size="22" value="" class='wiab le val' tabindex="1"/>
+                <br/>
+                @<gxp:eval expr='domain' />
+                
+                <br /><br />
+  
+                <span class="wiab le lbl"> Password: </span>
+                <br/>
+                <input id="password" name="password"
+                tabindex="2" autocomplete="OFF" type="password"
+                class='wiab le val' size="22"/>
+                
+                <br/><br/>
+
+                <span class="wiab le lbl">Re-enter
+                    Password: </span>
+                    <br/>
+                <input id="verifypass" name="verifypass"
                   tabindex="3" autocomplete="OFF" type="password"
-                  class='wiab le val' /></td>
-              </tr>
-            </tbody>
-          </table>
-          <table>
-            <tbody>
-              <tr>
-                <td align="center"><input class="wiab le button"
-                  value="Cancel" id="buttonStyle"
-                  onclick="history.go(-1)" tabindex="4" type="button" /></td>
-                <td align="center"><input class="wiab le button"
-                  value="Register" id="buttonStyle" tabindex="5"
-                  type="button" onclick="validate()" /></td>
-              </tr>
-            </tbody>
-          </table>
-          </td>
-        </tr>
-      </table>
+                  class='wiab le val' size="22"/>
+                
+                <br/>
+
+                <span id="messageLabel"><label
+                  id="messageLbl" style="display: none;"></label></span>
+
+                <br /><br />
+
+                <input class="wiab le button"
+                value="Register" id="buttonStyle" tabindex="4"
+                type="button" onclick="validate()" />
+                <br/>
+              </form>
+  
+              <div
+                id="signUp">
+              Already have a Wave in a Box @<gxp:eval expr='domain' />
+              account?</div>
+  
+              <div id="signuplinkcontainer"><span> <a
+                id="registerNewText"
+                href="/">Sign in</a> </span></div>
+          </gxp:if>
+  
+          <gxp:if cond='disableRegistration == true'>
+          Registration disabled by administrator.
+          </gxp:if>
+        </div>
+      </div>
+
+      <form id="hiddenLogin" action="/auth/signin" method="post">
+          <input type="hidden" name="address" id="addressHidden"/>
+          <input type="hidden" name="password" id="passwordHidden"/>
       </form>
-      </gxp:if>
-      </td>
-    </tr>
-  </table>
-  <table width="100%" border="0" align="center" cellpadding="0"
-    cellspacing="0" style="margin-top: 10px">
-    <tr>
-      <td width="95%">
-      <table width="100%" align="right" cellspacing="0" dir="ltr">
-        <tr>
-          <td class="bubble"
-            style='font-family: arial; text-align: left; font-weight: bold; padding-right: 10px;'
-            dir="ltr"></td>
-        </tr>
-      </table>
-      </td>
-    </tr>
-  </table>
+
+      
   <script type="text/javascript">
 	var RESPONSE_STATUS_NONE = "NONE";
 	var RESPONSE_STATUS_FAILED = "FAILED";
@@ -152,25 +126,35 @@
 	var message = <gxp:eval expr='message'/>;
 	var responseType =  <gxp:eval expr='responseType'/>;
 	var domain = <gxp:eval expr='domain'/>;
+  var loginDetails = <gxp:eval expr='loginDetails'/>;
 	
 	function init() {
 	    setFocus();
-	    handleResponse(responseType, message);
+	    handleResponse(responseType, loginDetails, message);
+      document.getElementById("verifypass")
+          .addEventListener("keyup", function(event) {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+              document.getElementById("buttonStyle").click();
+          }
+      });
 	}
 	
 	function setFocus() {
 	    document.getElementById("address").focus();
 	}
 	
-	function handleResponse(responseType,message) {
+	function handleResponse(responseType, loginDetails, message) {
 	    var messageLbl = document.getElementById("messageLbl");
 	    if(responseType == RESPONSE_STATUS_SUCCESS) {
-	        messageLbl.style.display = "inline";
-	        messageLbl.style.color = "green";
-	        messageLbl.innerHTML = message;
-	        document.getElementById("loginLink").style.display = "inline";
+	        if (loginDetails != null) {
+            loginDetailsObject = JSON.parse(loginDetails);
+            document.getElementById("addressHidden").value = loginDetailsObject.address;
+            document.getElementById("passwordHidden").value = loginDetailsObject.password;
+            document.getElementById("hiddenLogin").submit();
+          }
 	    } else if(responseType == RESPONSE_STATUS_FAILED) {
-	        messageLbl.style.display = "inline";
+	        messageLbl.style.display = "block";
 	        messageLbl.style.color = "red";
 	        messageLbl.innerHTML = message;
 	    }
@@ -181,13 +165,13 @@
 	    if (address.length &lt; 1) {
 	        message = "Username portion of address cannot be empty";
 	        responseType = RESPONSE_STATUS_FAILED;
-	        handleResponse(responseType,message);
+	        handleResponse(responseType, null, message);
 	        return;
 	    }
 	    if (!isAlphaNumeric(address)) {
 	        message = "Only letters (a-z), numbers (0-9), and periods (.) are allowed in Username";
 	        responseType = RESPONSE_STATUS_FAILED;
-	        handleResponse(responseType,message);
+	        handleResponse(responseType, null, message);
 	        return;
 	    }
 	    var password = document.getElementById("password").value;
@@ -195,7 +179,7 @@
 	    if((password != null &amp;&amp;  verifypass != null) &amp;&amp; (password != verifypass)) {
 	        message = "Password and password verification do not match!";
 	        responseType = RESPONSE_STATUS_FAILED;
-	        handleResponse(responseType,message);
+	        handleResponse(responseType, null, message);
 	        return;
 	    }
 	    document.getElementById("address").value = address + "@" + domain;

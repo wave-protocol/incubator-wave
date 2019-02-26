@@ -71,7 +71,7 @@ public final class UserRegistrationServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-    writeRegistrationPage("", AuthenticationServlet.RESPONSE_STATUS_NONE, req.getLocale(), resp);
+    writeRegistrationPage("", AuthenticationServlet.RESPONSE_STATUS_NONE, null, req.getLocale(), resp);
   }
 
   @Override
@@ -94,7 +94,9 @@ public final class UserRegistrationServlet extends HttpServlet {
       responseType = AuthenticationServlet.RESPONSE_STATUS_SUCCESS;
     }
 
-    writeRegistrationPage(message, responseType, req.getLocale(), resp);
+    writeRegistrationPage(message, responseType, 
+    "{\"password\": \"" + req.getParameter(HttpRequestBasedCallbackHandler.PASSWORD_FIELD) + "\",\"address\": \"" + 
+    req.getParameter(HttpRequestBasedCallbackHandler.ADDRESS_FIELD) + "\"}", req.getLocale(), resp);
   }
 
   /**
@@ -126,11 +128,11 @@ public final class UserRegistrationServlet extends HttpServlet {
     return null;
   }
 
-  private void writeRegistrationPage(String message, String responseType, Locale locale,
+  private void writeRegistrationPage(String message, String responseType, String loginDetails, Locale locale,
       HttpServletResponse dest) throws IOException {
     dest.setCharacterEncoding("UTF-8");
     dest.setContentType("text/html;charset=utf-8");
     UserRegistrationPage.write(dest.getWriter(), new GxpContext(locale), domain, message,
-        responseType, registrationDisabled, analyticsAccount);
+        responseType, loginDetails, registrationDisabled, analyticsAccount);
   }
 }

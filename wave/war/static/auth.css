@@ -18,137 +18,168 @@
 */
 
 @media only screen and (max-width: 850px) {
-    #content p,span {
-		margin-left: 0 !important;
-  	}
-
-  #screenshot {
+	#screenshot {
 	position: unset !important;
 	margin-left: 25%
-  }
+	}
 }
 
 @font-face {
 	font-family: 'roboto';
 	src: url('/static/Roboto-Regular.ttf');
-  }
-  
-  @font-face {
+}
+
+@font-face {
 	font-family: 'roboto-light';
 	src: url('/static/Roboto-Light.ttf');
-  }
-  
-  body {
-	  background-color: #FAFAFA;
-	  margin:0;
-	  padding:0;
-	  font-family: 'roboto', sans-serif;
-  }
-  
-  .bubble {
-	  background-color: #62c4fb;
-  }
-  
-  .icon {
+}
+
+body {
+	background-color: #FAFAFA;
+	margin:0;
+	padding:0;
+	font-family: 'roboto', sans-serif;
+}
+
+.bubble {
+	background-color: #62c4fb;
+}
+
+.icon {
 	float: left;
 	margin-right: 5px;
 	width: 28px;
-  }
-  
-  #header {
-	  width: 100%;
-	  background-color: #FFFFFF;
-	  padding: 1;
-  }
-  
-  #header img {
-	  display: block;
-	  margin-left: auto;
-	  margin-right: auto;
-  }
-  
-  #content {
-	  margin: 0;
-	  background-color: #37acec;
-	  color: #FFFFFF;
-	  padding: 10px;
-	  padding: 5%;
-  }
+}
 
-  #content p {
-  	margin-left: 55%
-  }
-  #content span {
-  	margin-left: 55%
-  }
-  
-  #tagline {
-	  font-size: 25pt;
-	  display: block;
-	  font-family: 'roboto-light', sans-serif;
-  }
-  
-  #content a:link {
-	  color: #FFFFFF;
-  }
+#header {
+	width: 100%;
+	background-color: #FFFFFF;
+	padding: 1px;
+}
 
-  #screenshot {
-	position:absolute;
-	top: 130px;
-	}
+#header img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 
-	#screenshot img {
-		width: 50%;
-	}
+#notHeader {
+	display: block;
+	width: 100%;
+    height: 50%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
 
-  #signinbox {
-  	width: 350px;
-  	background-color: #009688;
-  	padding: 20px;
-  	color: #FFFFFF;
-  	position: absolute;
-  	top:0;
-  	bottom: 0;
-  	left: 0;
-  	right: 0;
-  	margin: auto;
-  	height: 280px;
-  }
+#content {
+	margin: 0;
+	background-color: #37acec;
+	color: #FFFFFF;
+	padding: 10px;
+	padding: 5%;
+	display: flex;
+}
 
-  #signintext {
-	  text-align: center;
-  }
+#innerContent {
+	width: 100%;
+	margin: auto 0;
+}
 
-  #signinlink {
-  	text-decoration: none;
-  	color: #000;
-  	position: absolute;
-  	right: 20px;
-  	top: 17px;
-  	cursor: pointer;
-  }
+#tagline {
+	font-size: 25pt;
+	display: block;
+	font-family: 'roboto-light', sans-serif;
+	text-align: center;
+	margin-top: 12px;
+	margin-bottom: 15px;
+}
 
-  #signIn {
-  	margin-left: auto;
-    margin-right: auto;
+#learnMore {
+	color: #000000;
+	display: block;
+	text-align: center;
+    margin-bottom: 15px;
+}
+
+a {
+	color: #FFFFFF;
+}
+
+#screenshot {
+	display: block;
+	margin: auto 0;
+    margin-right: 15px;
+}
+
+#screenshot img {
+	width: 100%;
+}
+
+#signinbox {
+	width: fit-content;
+	background-color: #FFF;
+	padding: 20px;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	/* height: 280px; */
+	border-color: #FAFAFA;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 4px;
+}
+
+#signintext {
+	text-align: center;
+}
+
+#signuplink {
+	text-decoration: none;
+	color: #000;
+	position: absolute;
+	right: 20px;
+	top: 17px;
+	cursor: pointer;
+}
+
+#signUp {
+	text-align: center;
+}
+
+#signuplinkcontainer {
+	text-align: center;
+}
+
+#signuplinkcontainer a{
+	color: #000000;
+}
+
+.button {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	background-color: #37acec;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+#wiab_loginform, #regForm {
+	width: fit-content;
+    margin: 0 auto;
+}
+
+#messageLbl {
+	width: 22ch;
     display: block;
-    background-color: #37acec;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-  }
-
-  #signUp {
-  	text-align: center;
-  }
-
-  #signuplinkcontainer {
-  	text-align: center;
-  }
-
-  #signuplinkcontainer a{
-  	color: #FFFFFF
-  }
+    overflow-wrap: break-word;
+}

@@ -42,106 +42,72 @@
   <call:AnalyticsFragment expr:account='analyticsAccount'/>
   </head>
   <body onload="init()">
-  <div id="header">
-    <img src="/static/logo.png" border="0" width="45px" height="30"
-      id="logo" vspace="10" alt='Wave in a Box logo' />
-      <a href="#showsignin" id="signinlink">Sign in</a>
-  </div>
-    <div id="content">
+    <div id="header">
+      <img src="/static/logo.png" border="0" width="45px" height="30"
+        id="logo" vspace="10" alt='Wave in a Box logo' />
+        <a href="/auth/register" id="signuplink">Sign up</a>
+    </div>
+    
+    <div id="notHeader">
       <span id="tagline">
-        Apache Wave lets you communicate and collaborate in real time
+        Wave lets you communicate and collaborate in real time
       </span>
 
-      <p>
-        <b>Wave is equal parts conversation and document.</b>
-        People can communicate and work together with richly formatted text,
-        gadgets, robots and more. 
-      </p>
-
-      <p>
-        <b>Wave is shared.</b> Any participant can reply anywhere in the message,
-        edit the content and add participants at any point in the process.
-      </p>
-
-      <p>
-        <b>Wave is live.</b> 
-        With live transmission as you type, participants on a wave can have faster
-        conversations, see edits and interact with extensions in real-time. 
-      </p>
-
-    <div>
-    <p id="innerContent">
-      Apache Wave is a rich, distributed, real-time collaboration platform,
-      which allows users to work together in new and exciting ways.
-      <a href="http://incubator.apache.org/wave/" target="_blank">
-        "Wave in a Box" (WIAB)
-      </a>
-      project is a stand alone wave server and rich web client that can
-      serve as an Apache Wave reference implementation.
-      This project lets developers and
-      enterprise users run wave servers and host waves on their own hardware.
-    </p>
-    </div>
-    <a href="/static/wiab_screenshot.jpg" target="_blank" title="Click to enlarge" id="screenshot">
-      <img src="/static/wiab_screenshot.jpg"
-        alt="WIAB client."/>
-    </a>
-    </div>
-    <gxp:if cond='disableLoginPage == true'>
-    HTTP Authentication disabled by Administrator. Install and use your certificate instead.
-    </gxp:if>
-    <gxp:if cond='disableLoginPage == false'>
-    <div id="signinbox" style="display: none">
-    <form id="wiab_loginform" action="" method="post">
-      <h2 id="signintext">Sign in</h2>
-          <span class="wiab le lbl">
-            Username: 
-          </span>
-
-          <input type="text" name="address" id="address"
-            size="22" value="" class='wiab le val' /> @<gxp:eval expr='domain' />
+      <a href="/static/about.html" id="learnMore">Learn more...</a>
+      <div id="signinbox">
+        <gxp:if cond='disableLoginPage == false'>
           
-            <br /><br />
+            <form id="wiab_loginform" action="" method="post">
+              <h2 id="signintext">Sign in</h2>
+              <span class="wiab le lbl">
+                Username: 
+              </span>
+              <br/>
 
-          <span class="wiab le lbl"> Password: </span>
-          <input type="password" name="password"
-            id="password" size="22" class="wiab le val" />
-          <br/>
-          <span id="messageLabel"><label
-            id="messageLbl" style="display: none;"></label></span>
-          <br /><br />
-          <input type="submit"
-            class="wiab le button" name="signIn" id="signIn"
-            value="Sign in" />
-          </form>
+              <input type="text" name="address" id="address"
+                size="22" value="" class='wiab le val' />
+              <br/>
+              @<gxp:eval expr='domain' />
+              
+              <br /><br />
 
-          <div
-            id="signUp">
-          Don't have a Wave in a Box @<gxp:eval expr='domain' />
-          account?</div>
+              <span class="wiab le lbl"> Password: </span>
+              <br/>
+              <input type="password" name="password"
+                id="password" size="22" class="wiab le val" />
+              <br/>
+              <span id="messageLabel"><label
+                id="messageLbl" style="display: none;"></label></span>
+              <br />
+              <input type="submit"
+                class="wiab le button" name="signIn" id="signIn"
+                value="Sign in" />
+                <br/>
+            </form>
 
-          <div id="signuplinkcontainer"><span> <a
-            id="registerNewText"
-            href="/auth/register">Register a new account</a> </span></div>
-            </div>
-          </gxp:if>
+            <div
+              id="signUp">
+            Don't have a Wave in a Box @<gxp:eval expr='domain' />
+            account?</div>
+
+            <div id="signuplinkcontainer"><span> <a
+              id="registerNewText"
+              href="/auth/register">Register a new account</a> </span></div>
+        </gxp:if>
+
+        <gxp:if cond='disableLoginPage == true'>
+          HTTP Authentication disabled by Administrator. Install and use your certificate instead.
+        </gxp:if>
+      </div>
+    </div>
   <script type="text/javascript">
     var RESPONSE_STATUS_NONE = "NONE";
     var RESPONSE_STATUS_FAILED = "FAILED";
     var RESPONSE_STATUS_SUCCESS = "SUCCESS";
-    
-    link = document.getElementById("signinlink");
-    link.onclick = function() {
-      displaySignInBox();
-    };
 
-    if (document.location.href.includes("#showsignin")) {
-      displaySignInBox();
-    }
-
-    function displaySignInBox() {
-      sinbox = document.getElementById("signinbox");
-      sinbox.style = "display: block";
+    function displayContent() {
+      content = document.getElementById("content");
+      content.style = "display: flex";
     }
     
     var message = <gxp:eval expr='message'/>;
