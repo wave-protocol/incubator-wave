@@ -127,7 +127,7 @@
         if (responseType == RESPONSE_STATUS_NONE) {
             messageLbl.style.display = "none";
         } else if (responseType == RESPONSE_STATUS_FAILED) {
-            messageLbl.style.display = "inline";
+            messageLbl.style.display = "block";
             messageLbl.style.color = "red";
             messageLbl.innerHTML = message;
         }
