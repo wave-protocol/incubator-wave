@@ -39,7 +39,6 @@
         <div ui:field='msgs'/>
       </div>
       <span ui:field='title'/>
-      &mdash;
       <span ui:field='snippet'/>
     </div>
   </div>
