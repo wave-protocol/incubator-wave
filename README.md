@@ -219,4 +219,4 @@ You can then run the Solr server with:
     run-solr.sh
 for Linux/Mac or:
     run-solr.bat
-for Windows.
+for Windows. 
